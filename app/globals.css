@@ -1,0 +1,167 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050807;
+  --foreground: #f4f4f5;
+  --accent: #00ff9c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--background);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(0, 255, 156, 0.25);
+  color: #ffffff;
+}
+
+.section-shell {
+  scroll-margin-top: 5rem;
+  padding: 4rem 1rem;
+}
+
+.section-shell > div {
+  margin: 0 auto;
+  max-width: 80rem;
+}
+
+.section-heading {
+  margin-bottom: 2rem;
+}
+
+.section-heading h2 {
+  color: #ffffff;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: clamp(1.85rem, 8vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+
+.section-kicker {
+  color: var(--accent);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: clamp(0.68rem, 2.8vw, 0.75rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+a,
+button,
+input,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input,
+textarea {
+  font-size: 1rem;
+}
+
+.mobile-safe-text {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.cyber-grid {
+  background:
+    linear-gradient(rgba(0, 255, 156, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 156, 0.07) 1px, transparent 1px),
+    radial-gradient(circle at 50% 30%, rgba(0, 255, 156, 0.16), transparent 34%),
+    #050807;
+  background-size:
+    44px 44px,
+    44px 44px,
+    auto,
+    auto;
+  animation: grid-drift 18s linear infinite;
+}
+
+.scanline {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 255, 156, 0.06),
+    transparent
+  );
+  background-size: 100% 12rem;
+  animation: scanline 7s linear infinite;
+}
+
+.terminal-cursor::after {
+  animation: cursor-blink 1s steps(2, start) infinite;
+  color: var(--accent);
+  content: "_";
+  margin-left: 0.25rem;
+}
+
+@keyframes grid-drift {
+  from {
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+  to {
+    background-position:
+      44px 44px,
+      44px 44px,
+      0 0,
+      0 0;
+  }
+}
+
+@keyframes scanline {
+  from {
+    background-position: 0 -12rem;
+  }
+  to {
+    background-position: 0 100vh;
+  }
+}
+
+@keyframes cursor-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .section-shell {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .section-kicker {
+    letter-spacing: 0.28em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-shell {
+    padding: 6rem 2rem;
+  }
+}
